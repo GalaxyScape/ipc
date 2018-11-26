@@ -23,8 +23,10 @@ int main(int argc, char *argv[])
     sem_y =
         sem_open("write_sync", O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO, 0);
     if (sem_x == SEM_FAILED || sem_y == SEM_FAILED)
+    {
         perror("sem_open");
-    exit(-1);
+        exit(-1);
+    }
 
     if (sem_wait(sem_x) == -1)
     {
