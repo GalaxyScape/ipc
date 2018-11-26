@@ -13,7 +13,11 @@ int main()
                         "Go go go this is the light of the dawn",
                         "The Hobbit is something amazing"};
   sem_t sem;
-  sem_init(&sem, 0, 1);
+  if(sem_init(&sem, 0, 1)==-1)
+  {
+    perror("sem_init");
+    exit(-1);
+  }
   // pipe
   int pfd[2];
   //int dummy;
@@ -28,14 +32,25 @@ int main()
     case -1:
       perror("Fork Error\n");
     case 0: // child
-      sem_wait(&sem);
+      if (sem_wait(&sem) == -1)
+      {
+        perror("sem_wait");
+        exit(-1);
+      }
 
       // generate messages
 
       if (close(pfd[0]) == -1) // read end not used
+      {
         perror("close");
+        exit(-1);
+      }
       write(pfd[1], msg[i], MAXMSG);
-      sem_post(&sem);
+      if (sem_post(&sem) == -1)
+      {
+        perror("sem_post");
+        exit(-1);
+      }
       _exit(EXIT_SUCCESS);
     default:
       break;
@@ -52,6 +67,8 @@ int main()
     read(pfd[0], buffer, MAXMSG);
     printf("%s\n", buffer);
   }
+  if (close(pfd[0]) == -1) /* Write end is unused */
+    perror("close");
 
   exit(EXIT_SUCCESS);
 }
