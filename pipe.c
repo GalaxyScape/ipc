@@ -9,7 +9,7 @@
 #define MAXMSG 100
 int main()
 {
-  char msg[][MAXMSG] = {"This is an awesome attempt to go far "
+  char msg[][MAXMSG] = {"This is an awesome attempt to go far ",
                         "Go go go this is the light of the dawn",
                         "The Hobbit is something amazing"};
   sem_t sem;
