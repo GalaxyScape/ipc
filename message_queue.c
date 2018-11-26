@@ -20,6 +20,11 @@
 #define ANSI_COLOR_CYAN    "\x1b[36m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
 
+#define errExit(msg) do{\
+                        perror(x);\
+                        exit(-1);\
+                    }
+
 sem_t semx, semy, sem_rec, sem_1, sem_2;
 const char name[] = "/queue_for_ipc";
 
@@ -35,26 +40,26 @@ static void *Sender1()
     // restore old
     umask(old_umask);
     if (mqs == -1) {
-	perror("mq_open sender1");
-	exit(-1);
+	errExit("mq_open sender1");
+	// exit(-1);
     }
 
     struct mq_attr attr;
     if (mq_getattr(mqs, &attr) == -1) {
-	perror("mq_getattr sender1");
-	exit(-1);
+	errExit("mq_getattr sender1");
+	// exit(-1);
     }
 
     char store[100] = { };
     while (scanf("%s", store) && strcmp(store, tr) != 0) {
 	if (sem_wait(&sem_1) == -1) {
-	    perror("sem_wait sem_1");
-	    exit(-1);
+	    errExit("sem_wait sem_1");
+	    // exit(-1);
 	}
 	printf("\n%s input of Sender 1\n", store);
 	if (mq_send(mqs, store, strlen(store) + 1, 0)) {
-	    perror("mq_send");
-	    exit(-1);
+	    errExit("mq_send");
+	    // exit(-1);
 	}
 
 	if (sem_post(&sem_1) == -1) {
