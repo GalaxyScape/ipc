@@ -24,8 +24,6 @@ int main(int argc, char *argv[])
     if (sem_x == SEM_FAILED || sem_y == SEM_FAILED)
 	perror("sem_open");
 
-    printf("This should be 1\n");
-
     //begin
     int fd;
     size_t len;
@@ -39,7 +37,10 @@ int main(int argc, char *argv[])
     umask(old_umask);
 
     if (fd == -1)
-	perror("shm_open");
+	{
+        perror("shm_open");
+        exit(-1)
+    }
     char arr[100] = { };
     scanf("%s", arr);
     len = strlen(arr) + 1;
@@ -53,7 +54,7 @@ int main(int argc, char *argv[])
 
     if (fstat(fd, &sb) == -1) {
 	perror("stat");
-	//exit(EXIT_SUCCESS);
+	exit(-1);
     }
 
     printf("sb.st_size is %d\n", sb.st_size);

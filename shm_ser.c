@@ -41,14 +41,17 @@ int main(int argc, char *argv[])
     // restore old
     umask(old_umask);
     if (fd == -1)
-	perror("shm_open");
+	{
+        perror("shm_open");
+        exit(-1);
+    }
     printf("fd  %d\n", fd);
     char arr[100];
     if (fstat(fd, &sb) == -1) {
 	perror("stat");
-	//exit(EXIT_SUCCESS);
+	exit(-1);
     }
-    len = sb.st_size;		//获取长度
+    len = sb.st_size;		
     printf("sb.st_size is %d\n", len);
     addr = mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
     if (addr == MAP_FAILED)
