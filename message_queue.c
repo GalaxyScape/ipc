@@ -181,7 +181,7 @@ static void *Sender2()
         perror("mq_receive");
         exit(-1);
     }
-    
+
     printf(ANSI_COLOR_GREEN "%s from Sender2" ANSI_COLOR_RESET "\n",
            from_main);
 
@@ -272,7 +272,7 @@ int main(void)
             mq_send(handler, over1, strlen(over1), 0);
             if (sem_wait(&sem_rec) == -1)
             {
-                perror("sem_wait sem_rec")
+                perror("sem_wait sem_rec");
                     exit(-1);
             }
             printf("send over1\n");
@@ -294,7 +294,7 @@ int main(void)
             printf("send over2\n");
             if (sem_wait(&sem_rec) == -1)
             {
-                perror("sem_wait sem_rec")
+                perror("sem_wait sem_rec");
                     exit(-1);
             }
             ++cnt;
