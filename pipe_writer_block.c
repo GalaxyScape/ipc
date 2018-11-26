@@ -55,6 +55,7 @@ int main()
             ++count;
             alarm(0);
         }
+        printf("here");
         if (close(p[1]) == -1)
         {
             perror("close");
