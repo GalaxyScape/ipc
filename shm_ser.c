@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
         exit(-1);
     }
     len = sb.st_size;
-    printf("sb.st_size is %d\n", len);
+    printf("sb.st_size is %ld\n", len);
     addr = mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
     if (addr == MAP_FAILED)
     {
