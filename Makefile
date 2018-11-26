@@ -4,7 +4,7 @@ message_queue: message_queue.c
 	clang -o message_queue message_queue.c -Wall -pthread -lrt
 
 pipe_block_writer: pipe_block_writer.c
-	clang -o pipe_block_writer.c pipe_block_writer.c -Wall -pthread -lrt
+	clang -o pipe_block_writer pipe_block_writer.c -Wall -pthread -lrt
 
 pipe: pipe.c
 	clang -o pipe pipe.c -Wall -pthread -lrt
