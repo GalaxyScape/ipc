@@ -75,8 +75,11 @@ int main()
         {
             break;
         }
+        printf("%c",d);
         ++read_cnt;
     }
     printf("PIPE size is %d",read_cnt);
+        if (close(p[0]) == -1)
+        perror("close");
     return 0;
 }
