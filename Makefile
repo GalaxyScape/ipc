@@ -3,7 +3,7 @@ all: message_queue pipe_block_writer pipe pipe_sync
 message_queue: message_queue.c
 	clang -o message_queue message_queue.c -Wall -pthread -lrt
 
-pipe_block_writer: pipe_block_writer.c.c
+pipe_block_writer: pipe_block_writer.c
 	clang -o pipe_block_writer.c pipe_block_writer.c -Wall -pthread -lrt
 
 pipe: pipe.c
