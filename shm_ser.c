@@ -9,11 +9,8 @@
 
 int main(int argc, char *argv[])
 {
-    int flags;
     sem_t *sem_x;
     sem_t *sem_y;
-
-    flags = 0;
 
     //begin
     int fd;

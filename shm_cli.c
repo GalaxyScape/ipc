@@ -9,12 +9,8 @@
 
 int main(int argc, char *argv[])
 {
-    int flag;
-    
     sem_t *sem_x;
     sem_t *sem_y;
-
-    flags = 0;
 
     sem_x = sem_open("read_sync", O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO, 0);
     sem_y =
