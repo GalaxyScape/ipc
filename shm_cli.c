@@ -9,9 +9,8 @@
 
 int main(int argc, char *argv[])
 {
-    int flags, opt;
-    mode_t perms;
-    unsigned int value;
+    int flag;
+    
     sem_t *sem_x;
     sem_t *sem_y;
 
