@@ -16,7 +16,7 @@ int main()
   sem_init(&sem, 0, 1);
   // pipe
   int pfd[2];
-  int dummy;
+  //int dummy;
   setbuf(stdout, NULL);
   if (pipe(pfd) == -1)
     perror("pipe");
