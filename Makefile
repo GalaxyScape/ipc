@@ -1,4 +1,4 @@
-all: message_queue pipe_block_writer pipe pipe_sync
+all: message_queue pipe_block_writer pipe pipe_sync shm_cli shm_ser
 
 message_queue: message_queue.c
 	clang -o message_queue message_queue.c -Wall -pthread -lrt
