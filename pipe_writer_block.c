@@ -11,6 +11,8 @@ int count = 0;
 int read_cnt = 0;
 sem_t sem;
 
+//使用信号测试管道大小 超时未取消信号视作管道阻塞
+
 void my_alarm_handler(int signo)
 {
     printf("Write blocked after %d characters\n", count);

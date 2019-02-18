@@ -6,6 +6,14 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+//使用管道同步 思路来自TLPI
+
+/**
+ * 当管道为空且存在写端口时，管道的读端会被阻塞
+ * 当管道为空且所有的写端口都被关闭的时候，对管道的读写会出错返回-1
+ * 使用阻塞来实现同步
+ */ 
+
 int main(int argc, char *argv[])
 {
 	int pfd[2];

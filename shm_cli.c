@@ -7,6 +7,8 @@
 #include <string.h>
 #include <unistd.h>
 
+//共享内存的发送端
+
 int main(int argc, char *argv[])
 {
     sem_t *sem_x;

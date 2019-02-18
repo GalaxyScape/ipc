@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <fcntl.h>
 
+//另一种测试管道大小的思路，借助将管道置为NON_BLOCK
+
 int main()
 {
     int cnt = 0;

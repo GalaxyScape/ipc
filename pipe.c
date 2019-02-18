@@ -7,6 +7,9 @@
 #include <sys/wait.h>
 #include <unistd.h>
 #define MAXMSG 100
+
+//fork产生的父子间使用管道通信
+
 int main()
 {
   char msg[][MAXMSG] = {"This is an awesome attempt to go far ",
