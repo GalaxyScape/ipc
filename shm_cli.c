@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     if (fd == -1)
     {
         perror("shm_open");
-        exit(-1)
+        exit(-1);
     }
     char arr[100] = {};
     scanf("%s", arr);

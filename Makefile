@@ -1,10 +1,10 @@
-all: message_queue pipe_block_writer pipe pipe_sync shm_cli shm_ser pipe_writer_block
+all: message_queue test_pipe_size_with_nonblock pipe pipe_sync shm_cli shm_ser pipe_writer_block
 
 message_queue: message_queue.c
 	clang -o message_queue message_queue.c -Wall -pthread -lrt
 
-pipe_block_writer: pipe_block_writer.c
-	clang -o pipe_block_writer pipe_block_writer.c -Wall -pthread -lrt
+test_pipe_size_with_nonblock: test_pipe_size_with_nonblock.c
+	clang -o test_pipe_size_with_nonblock test_pipe_size_with_nonblock.c -Wall -pthread -lrt
 
 pipe: pipe.c
 	clang -o pipe pipe.c -Wall -pthread -lrt
@@ -20,3 +20,6 @@ shm_ser: shm_ser.c
 
 pipe_writer_block: pipe_writer_block.c
 	clang -o pipe_writer_block pipe_writer_block.c  -Wall -pthread -lrt
+
+clean:
+	rm message_queue test_pipe_size_with_nonblock pipe pipe_sync shm_cli shm_ser pipe_writer_block

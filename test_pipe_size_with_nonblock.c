@@ -2,8 +2,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include <errno.h>
 
-//另一种测试管道大小的思路，借助将管道置为NON_BLOCK
+/// \brief 另一种测试管道大小的思路，借助将管道置为NON_BLOCK
 
 int main()
 {
@@ -23,7 +24,8 @@ int main()
 
         if (write(p[1], &c, 1) == -1)
         {
-            perror("write");
+            printf("write fail with errno: %d\n", errno);
+            printf("errno : 11 => EAGAIN\n");
             break;
         }
         ++cnt;
