@@ -17,7 +17,7 @@ int main()
 
     if (fcntl(p[1], F_SETFL, O_NONBLOCK) < 0)
     {
-        exit(-3);
+        goto failed;
     }
     while (1)
     {
@@ -31,13 +31,14 @@ int main()
         ++cnt;
     }
     printf("the size of pipe is %d\n", cnt);
-    if (close(p[0]) == -1)
-    {
-        perror("close p[0]");
-    }
-    if (close(p[1]) == -1)
-    {
-        perror("close p[1]");
-    }
+    
+    close(p[0]);
+    close(p[1]);
+
     return 0;
+
+failed:
+    close(p[0]);
+    close(p[1]);
+    exit(-1);
 }
